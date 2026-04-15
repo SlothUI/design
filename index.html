@@ -237,6 +237,38 @@
 		});
 	</script>
 
+	<div id="lightbox" class="lightbox">
+		<span class="lightbox-close">&times;</span>
+		<img class="lightbox-content" id="lightbox-img">
+	</div>
+
+	<script>
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const portfolioImgs = document.querySelectorAll('.card-image img');
+
+		// Open Lightbox
+		portfolioImgs.forEach(img => {
+			img.style.cursor = 'zoom-in';
+			img.addEventListener('click', () => {
+				lightbox.style.display = 'block';
+				setTimeout(() => lightbox.classList.add('active'), 10);
+				lightboxImg.src = img.src;
+			});
+		});
+
+		// Close Lightbox (when clicking background or X)
+		lightbox.addEventListener('click', (e) => {
+			// Only close if they click the background, the X, or the container
+			if (e.target !== lightboxImg) {
+				lightbox.classList.remove('active');
+				setTimeout(() => {
+					lightbox.style.display = 'none';
+				}, 300); // Matches the CSS transition time
+			}
+		});
+	</script>
+
 </body>
 
 </html>
