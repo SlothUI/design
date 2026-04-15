@@ -1,151 +1,124 @@
+/* --- 1. THE VOID & CORE FONTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap');
 
-/* --- RESET & CORE --- */
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, li, section, header, footer {
-    margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-
-body {
+html, body {
     background-color: #020202 !important;
     color: #aaaaaa;
     font-family: 'Inter', sans-serif;
-    line-height: 1.75;
-    overflow-x: hidden;
+    margin: 0; padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, strong {
-    font-family: 'Syne', sans-serif !important;
-    color: #ffffff !important;
+/* The Nebulous Background */
+body {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.04) 0%, transparent 40%);
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-/* --- SIDEBAR (THE FIX) --- */
+/* --- 2. THE PROLOGUE SIDEBAR (Fixed & Cleaned) --- */
 #header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background: #050505;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
     color: #fff;
-    height: 100%;
-    left: 0;
-    overflow-y: auto;
-    position: fixed;
-    text-align: right;
-    top: 0;
-    width: 300px;
-    z-index: 10000;
-    border-right: 1px solid rgba(255,255,255,0.05);
 }
 
-#header .top { flex-grow: 1; }
-#header .bottom { padding: 2em 0; text-align: center; }
-
-#logo { padding: 3em 2em 1.5em 2em; }
+#logo { padding: 3em 2em; }
 #logo .image.avatar48 {
-    display: block;
-    margin: 0 0 1em auto;
-    width: 48px;  /* Fixes the "Giant Avatar" bug */
-    height: 48px;
+    width: 48px; height: 48px;
     border-radius: 100%;
     overflow: hidden;
+    display: inline-block;
 }
-#logo .image.avatar48 img { width: 100%; height: 100%; }
 
-#nav ul { list-style: none; }
 #nav ul li a {
-    display: block;
-    padding: 0.75em 2em;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4);
     transition: 0.3s;
-    font-size: 0.8em;
-    letter-spacing: 0.15em;
+    border-bottom: none; /* Removed the old dotted line */
 }
+
 #nav ul li a:hover, #nav ul li a.active {
     color: #8a2be2;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.03);
 }
 
-/* --- MAIN CONTENT --- */
-#main {
-    margin-left: 300px;
-}
-
-#main > section {
-    padding: 6em 4em;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-/* --- PORTFOLIO CARDS (THE 50/50 SPLIT) --- */
-.portfolio-list {
-    margin-top: 3em;
-}
-
+/* --- 3. THE PORTFOLIO CARDS (Enlarging Fade & X) --- */
 .portfolio-card {
+    position: relative;
     display: flex;
-    align-items: center;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 3em;
-    border-radius: 12px;
+    border-radius: 15px;
+    margin-bottom: 30px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.9;
 }
 
-.card-image { flex: 0 0 50%; padding: 1.5em; }
-.card-image img { 
-    width: 100%; 
-    border-radius: 6px; 
-    cursor: zoom-in;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+/* The Cool Enlarging Fade effect */
+.portfolio-card:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    border-color: rgba(138, 43, 226, 0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
+.card-image { flex: 0 0 50%; cursor: zoom-in; }
 .card-content { flex: 0 0 50%; padding: 3em; }
 
-/* --- BUTTONS --- */
-.button {
-    display: inline-block;
-    padding: 0.75em 2em;
-    background: #8a2be2;
-    color: #fff !important;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-.button:hover { background: #4b0082; transform: translateY(-2px); }
-
-/* --- LIGHTBOX --- */
-.lightbox {
-    display: none;
+/* --- 4. THE LIGHTBOX & X BUTTON --- */
+#lightbox {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 20000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.92); /* Darkens the background */
+    backdrop-filter: blur(8px);
+    display: none;
     justify-content: center;
     align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
-.lightbox.active { display: flex; }
-.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
 
-/* --- RESPONSIVE --- */
-@media screen and (max-width: 960px) {
-    #header { width: 100%; position: relative; height: auto; text-align: center; }
-    #logo .image.avatar48 { margin: 0 auto 1em auto; }
-    #main { margin-left: 0; }
-    .portfolio-card { flex-direction: column; }
-    .card-image, .card-content { flex: 0 0 100%; }
+#lightbox.active { display: flex; opacity: 1; }
+
+#lightbox img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(138, 43, 226, 0.2);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px; right: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s;
+}
+
+.close-lightbox:hover { color: #8a2be2; transform: rotate(90deg); }
+
+/* --- 5. THE BUTTONS --- */
+.button {
+    background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%) !important;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
 }
