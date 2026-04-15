@@ -2,8 +2,11 @@
 
 /* The Void Canvas */
 body {
-    background-color: #030303; /* Deepest Black */
-    color: #efefef;
+    background-color: #020202 !important;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #main > section {
@@ -2877,16 +2880,18 @@ body {
     overflow-x: hidden;
 }
 
-/* 1. Push the Nebula to the absolute basement */
+/* 2. Fix Nebula Depth and Position */
 .nebula-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -9999 !important; /* Extremely low number */
-    pointer-events: none; 
+    z-index: -9999 !important; /* Pushes it behind everything */
+    pointer-events: none;      /* Makes it "clickable" through */
     background: #020202;
+    margin: 0;
+    padding: 0;
 }
 
 /* 2. Pull the Wrapper to the front */
@@ -2902,14 +2907,16 @@ body {
 }
 
 /* 3. The Blobs */
+/* 3. The Blobs and Animation (Keep these as is) */
 .blob {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%); /* Very subtle purple */
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%);
     filter: blur(80px);
     border-radius: 50%;
-    z-index: -1;
+    z-index: -10000;
+    pointer-events: none;
     animation: drift 20s infinite alternate ease-in-out;
 }
 
@@ -2917,17 +2924,29 @@ body {
 .blob-2 { 
     bottom: -10%; 
     right: -10%; 
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%); /* Subtle Cyan */
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
     animation-duration: 30s; 
     animation-delay: -5s;
 }
-.blob-3 { 
-    top: 40%; 
-    left: 30%; 
-    width: 400px; 
-    height: 400px; 
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%); 
-    animation-duration: 40s; 
+.blob-3 { top: 40%; left: 30%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%); animation-duration: 40s; }
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(100px, 80px) scale(1.1); }
+    100% { transform: translate(-40px, 120px) scale(0.9); }
+}
+
+/* 4. Snap Content to Top */
+#wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+#header {
+    background: #020202 !important;
+    top: 0;
 }
 
 /* 4. The Movement Animation */
