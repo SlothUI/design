@@ -2870,3 +2870,62 @@ header p {
     letter-spacing: 0.2em;
     padding: 1em 0;
 }
+
+/* 1. The Overall Void */
+body {
+    background-color: #020202 !important; /* Deepest possible black */
+    overflow-x: hidden;
+}
+
+/* 2. The Nebula Container */
+.nebula-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Sits behind everything */
+    background: #020202;
+    overflow: hidden;
+}
+
+/* 3. The Blobs */
+.blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%); /* Very subtle purple */
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: -1;
+    animation: drift 20s infinite alternate ease-in-out;
+}
+
+.blob-1 { top: -10%; left: -10%; animation-duration: 25s; }
+.blob-2 { 
+    bottom: -10%; 
+    right: -10%; 
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%); /* Subtle Cyan */
+    animation-duration: 30s; 
+    animation-delay: -5s;
+}
+.blob-3 { 
+    top: 40%; 
+    left: 30%; 
+    width: 400px; 
+    height: 400px; 
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%); 
+    animation-duration: 40s; 
+}
+
+/* 4. The Movement Animation */
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(100px, 50px) scale(1.1); }
+    100% { transform: translate(-50px, 150px) scale(0.9); }
+}
+
+/* 5. Clean up Section Backgrounds */
+#main > section, .container, #header {
+    background: transparent !important; /* Makes sure the template doesn't block the nebula */
+}
