@@ -2638,16 +2638,16 @@ input, select, textarea {
 .portfolio-card {
     display: flex;
     background: rgba(255, 255, 255, 0.03);
-    margin-bottom: 3em; /* More spacing for row feel */
+    margin-bottom: 3em; 
     border-radius: 12px;
     align-items: center;
     text-align: left;
     border: 1px solid rgba(255, 255, 255, 0.05);
     
-    /* Starting position: shifted right and invisible */
+    /* Keep existing animation properties below */
     opacity: 0;
     transform: translateX(100px); 
-    transition: opacity 0.5s ease-out; /* Smooth fade, but movement is tied to scroll */
+    transition: opacity 0.25s ease-out;
 }
 
 .card-image {
