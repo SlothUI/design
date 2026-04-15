@@ -3051,3 +3051,41 @@ p, span, li, a {
     top: 0 !important;
     padding-top: 1em !important;
 }
+
+
+
+
+/* 1. Kill the top padding on the entire wrapper */
+#wrapper {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* 2. Force the Sidebar (Header) to the absolute top left */
+#header {
+    top: 0 !important;
+    padding: 1.5em 1em !important; /* Adjust the 1.5em to nudge the sidebar logo up/down */
+    background: transparent !important; /* Let the nebula bleed through */
+}
+
+/* 3. Fix the "Intro" section position */
+section.one {
+    padding-top: 2em !important; /* Reduces the massive gap above the main graphic */
+    background: transparent !important;
+    min-height: auto !important;
+}
+
+/* 4. Align the Sidebar Logo specifically */
+#logo {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Make the intro text pop against the dark background */
+section.one p {
+    color: #ffffff !important;
+    opacity: 0.8;
+    font-size: 1.1em;
+    margin-top: 1em;
+}
