@@ -17,7 +17,7 @@
     <div id="header">
         <div class="top">
             <div id="logo">
-                <span class="image avatar48"><img src="images/avatar.png" alt="Avatar" /></span>
+                <span class="image avatar48"><img src="images/avatar.png" alt="" /></span>
                 <h1 id="title">Sloth</h1>
                 <p>UI/Graphics Designer</p>
             </div>
@@ -43,11 +43,13 @@
 
     <div id="main">
 
-        <section id="top" class="one">
+        <section id="top" class="one dark cover" style="background-image: url('images/banner.png'); background-size: cover; background-position: center;">
             <div class="container">
                 <header>
-                    <img src="images/logo.png" alt="Sloth UI Logo" style="max-width: 720px; height: auto;">
-                    <p>Hey, I'm Sloth! Check out my work below :)</p>
+                    <img src="images/logo.png" alt="Sloth UI Logo" style="max-width: 720px; height: auto; margin-bottom: 20px;">
+                    <p style="font-size: 1.2em; color: rgba(255,255,255,0.75);">
+                        Hey, I'm Sloth! Check out my work below :)
+                    </p>
                 </header>
                 <footer>
                     <a href="#portfolio" class="button scrolly">View Work</a>
@@ -59,8 +61,8 @@
             <div class="container">
                 <header>
                     <h2>Portfolio</h2>
-                    <p>High-performance interfaces and bespoke game identities.</p>
                 </header>
+                <p>A collection of high-performance interfaces and bespoke game identities.</p>
 
                 <div class="portfolio-list">
                     <article class="portfolio-card">
@@ -69,7 +71,7 @@
                         </div>
                         <div class="card-content">
                             <h3>Fantasy Arena HUD</h3>
-                            <p>A context-driven interface designed for high-stakes combat, focusing on atmospheric consistency.</p>
+                            <p>A context-driven interface designed for high-stakes combat.</p>
                         </div>
                     </article>
 
@@ -79,7 +81,7 @@
                         </div>
                         <div class="card-content">
                             <h3>Chainsaw-Man RPG HUD</h3>
-                            <p>Designed and hand painted UI to fit a Chainsaw-Man game style perfectly.</p>
+                            <p>Designed and hand painted UI to fit a Chainsaw-Man game.</p>
                         </div>
                     </article>
 
@@ -89,7 +91,7 @@
                         </div>
                         <div class="card-content">
                             <h3>Mecha Sci-Fi HUD</h3>
-                            <p>A HUD designed to simulate a pilot's controls and resources within a Mecha Suit.</p>
+                            <p>A HUD designed to simulate a pilot's controls.</p>
                         </div>
                     </article>
                 </div>
@@ -102,9 +104,8 @@
                     <h2>About Me</h2>
                 </header>
                 <p>
-                    I'm a 21-year-old Canadian designer with 4 years of experience. 
-                    I focus on innovative artistic approaches with functionality at the forefront, 
-                    leading to immersive identities for the games I work on.
+                    I'm Sloth, a 21-year-old Canadian designer. I focus on thorough consistency 
+                    with the game's atmosphere, bringing the player into the world and action.
                 </p>
             </div>
         </section>
@@ -115,15 +116,11 @@
                     <h2>Contact</h2>
                 </header>
                 <form method="post" action="#">
-                    <div class="row gtr-50">
+                    <div class="row">
                         <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
                         <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-                        <div class="col-12">
-                            <textarea name="message" placeholder="Message"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <input type="submit" value="Send Message" />
-                        </div>
+                        <div class="col-12"><textarea name="message" placeholder="Message"></textarea></div>
+                        <div class="col-12"><input type="submit" value="Send Message" /></div>
                     </div>
                 </form>
             </div>
@@ -132,12 +129,13 @@
 
     <div id="footer">
         <ul class="copyright">
-            <li>&copy; Sloth Designing. All rights reserved.</li>
+            <li>&copy; Sloth. All rights reserved.</li>
             <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </div>
 
     <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lb-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
     </div>
 
@@ -151,36 +149,39 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Lightbox Logic
+            // 1. LIGHTBOX LOGIC
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            const images = document.querySelectorAll('.card-image img');
+            const lbClose = document.getElementById('lb-close');
+            const portfolioImgs = document.querySelectorAll('.card-image img');
 
-            images.forEach(img => {
+            portfolioImgs.forEach(img => {
                 img.addEventListener('click', () => {
                     lightboxImg.src = img.src;
-                    lightbox.style.display = 'flex';
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Stop background scroll
                 });
             });
 
-            lightbox.addEventListener('click', () => {
-                lightbox.style.display = 'none';
-            });
+            // Close when clicking X or the darkened background
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
 
-            // 2. Optimized Scroll Observer
+            lbClose.onclick = closeLightbox;
+            lightbox.onclick = (e) => { if (e.target !== lightboxImg) closeLightbox(); };
+
+            // 2. SCROLL REVEAL LOGIC
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
+                        entry.target.classList.add('visible');
                     }
                 });
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.portfolio-card').forEach(card => {
-                card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-                card.style.opacity = "0";
-                card.style.transform = "translateY(40px)";
                 observer.observe(card);
             });
         });
