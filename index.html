@@ -1,348 +1,189 @@
 <!DOCTYPE HTML>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-
 <head>
-	<title>Prologue by HTML5 UP</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+    <title>Sloth | UI/Graphics Designer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 </head>
+<body class="is-preload">
 
-<body>
-	<div class="nebula-container">
-		<div class="blob blob-1"></div>
-		<div class="blob blob-2"></div>
-		<div class="blob blob-3"></div>
-	</div>
+    <div class="nebula-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-	<div id="wrapper">
+    <div id="header">
+        <div class="top">
+            <div id="logo">
+                <span class="image avatar48"><img src="images/avatar.png" alt="Avatar" /></span>
+                <h1 id="title">Sloth</h1>
+                <p>UI/Graphics Designer</p>
+            </div>
 
-	</div>
-	<script>
-		const cards = document.querySelectorAll('.portfolio-card');
-		window.addEventListener('scroll', () => {
-			const triggerBottom = window.innerHeight * 0.9;
-			cards.forEach(card => {
-				const cardTop = card.getBoundingClientRect().top;
-				if (cardTop < triggerBottom) {
-					let progress = (triggerBottom - cardTop) / 400;
-					progress = Math.min(Math.max(progress, 0), 1);
-					const xOffset = 100 - (progress * 100);
-					card.style.transform = `translateX(${xOffset}px)`;
-					card.style.opacity = progress;
-				} else {
-					card.style.opacity = 0;
-					card.style.transform = `translateX(100px)`;
-				}
-			});
-		});
-	</script>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+                    <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+                    <li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+                    <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
+                </ul>
+            </nav>
+        </div>
 
-	<div id="lightbox" class="lightbox">
-		<span class="lightbox-close">&times;</span>
-		<img class="lightbox-content" id="lightbox-img">
-	</div>
+        <div class="bottom">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </div>
+    </div>
 
-	<script>
-		const lightbox = document.getElementById('lightbox');
-		const lightboxImg = document.getElementById('lightbox-img');
-		const portfolioImgs = document.querySelectorAll('.card-image img');
-		portfolioImgs.forEach(img => {
-			img.style.cursor = 'zoom-in';
-			img.addEventListener('click', () => {
-				lightboxImg.src = img.src;
-				lightbox.classList.add('active');
-			});
-		});
-		lightbox.addEventListener('click', (e) => {
-			if (e.target !== lightboxImg) lightbox.classList.remove('active');
-		});
-		document.addEventListener('keydown', (e) => {
-			if (e.key === "Escape") lightbox.classList.remove('active');
-		});
-	</script>
+    <div id="main">
+
+        <section id="top" class="one">
+            <div class="container">
+                <header>
+                    <img src="images/logo.png" alt="Sloth UI Logo" style="max-width: 720px; height: auto;">
+                    <p>Hey, I'm Sloth! Check out my work below :)</p>
+                </header>
+                <footer>
+                    <a href="#portfolio" class="button scrolly">View Work</a>
+                </footer>
+            </div>
+        </section>
+
+        <section id="portfolio" class="two">
+            <div class="container">
+                <header>
+                    <h2>Portfolio</h2>
+                    <p>High-performance interfaces and bespoke game identities.</p>
+                </header>
+
+                <div class="portfolio-list">
+                    <article class="portfolio-card">
+                        <div class="card-image">
+                            <img src="images/arena_ui.png" alt="Fantasy Arena HUD" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Fantasy Arena HUD</h3>
+                            <p>A context-driven interface designed for high-stakes combat, focusing on atmospheric consistency.</p>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <div class="card-image">
+                            <img src="images/csm_ui.png" alt="Chainsaw-Man HUD" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Chainsaw-Man RPG HUD</h3>
+                            <p>Designed and hand painted UI to fit a Chainsaw-Man game style perfectly.</p>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <div class="card-image">
+                            <img src="images/mecha_ui.png" alt="Mecha Sci-Fi HUD" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Mecha Sci-Fi HUD</h3>
+                            <p>A HUD designed to simulate a pilot's controls and resources within a Mecha Suit.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="three">
+            <div class="container">
+                <header>
+                    <h2>About Me</h2>
+                </header>
+                <p>
+                    I'm a 21-year-old Canadian designer with 4 years of experience. 
+                    I focus on innovative artistic approaches with functionality at the forefront, 
+                    leading to immersive identities for the games I work on.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="four">
+            <div class="container">
+                <header>
+                    <h2>Contact</h2>
+                </header>
+                <form method="post" action="#">
+                    <div class="row gtr-50">
+                        <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+                        <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+                        <div class="col-12">
+                            <textarea name="message" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <input type="submit" value="Send Message" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer">
+        <ul class="copyright">
+            <li>&copy; Sloth Designing. All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const images = document.querySelectorAll('.card-image img');
+
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            lightbox.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            // 2. Optimized Scroll Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.portfolio-card').forEach(card => {
+                card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
+                card.style.opacity = "0";
+                card.style.transform = "translateY(40px)";
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
-
-<!-- Header -->
-<div id="header">
-
-	<div class="top">
-
-		<!-- Logo -->
-		<div id="logo">
-			<span class="image avatar48"><img src="images/avatar.png" alt="" /></span>
-			<h1 id="title">Sloth</h1>
-			<p>UI/Graphics Designer</p>
-		</div>
-
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-				<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a>
-				</li>
-				<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-				<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a>
-				</li>
-			</ul>
-		</nav>
-
-	</div>
-
-	<div class="bottom">
-
-		<!-- Social Icons -->
-		<ul class="icons">
-			<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-			<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-			<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-			<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-			<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-		</ul>
-
-	</div>
-
-</div>
-
-<!-- Main -->
-<div id="main">
-
-	<!-- Intro -->
-	<section id="top" class="one dark cover"
-		style="background-image: url('images/banner.png'); background-size: cover; background-position: center;">
-		<div class="container">
-
-			<header>
-				<img src="images/logo.png" alt="Sloth UI Logo"
-					style="max-width: 720px; height: auto; margin-bottom: 20px;">
-
-				<p style="font-size: 1.2em; color: rgba(255,255,255,0.75);">
-					Hey, I'm Sloth! Check out my work below :)
-				</p>
-			</header>
-
-			<footer>
-				<a href="#portfolio" class="button scrolly">View Work</a>
-			</footer>
-
-		</div>
-	</section>
-
-	<!-- Portfolio -->
-	<section id="portfolio" class="two">
-		<div class="container">
-
-			<header>
-				<h2>Portfolio</h2>
-			</header>
-
-			<p>A collection of high-performance interfaces and bespoke game identities.</p>
-
-			<div class="portfolio-list">
-
-				<article class="portfolio-card">
-					<div class="card-image">
-						<img src="images/arena_ui.png" alt="Fantasy Arena HUD" />
-					</div>
-					<div class="card-content">
-						<h3>Fantasy Arena HUD</h3>
-						<p>A context-driven interface designed for high-stakes combat, focusing on atmospheric
-							consistency and player focus.</p>
-					</div>
-				</article>
-
-				<article class="portfolio-card">
-					<div class="card-image">
-						<img src="images/csm_ui.png" alt="Chainsaw-Man HUD" />
-					</div>
-					<div class="card-content">
-						<h3>Chainsaw-Man RPG HUD</h3>
-						<p>Designed and hand painted UI to fit a Chainsaw-Man game.</p>
-					</div>
-				</article>
-
-				<article class="portfolio-card">
-					<div class="card-image">
-						<img src="images/mecha_ui.png" alt="Mecha Sci-Fi HUD" />
-					</div>
-					<div class="card-content">
-						<h3>Mecha Sci-Fi HUD</h3>
-						<p>A HUD designed to simulate a pilot's controls and resources within a Mecha Suit.</p>
-					</div>
-				</article>
-
-			</div>
-		</div>
-	</section>
-
-	<!-- About Me -->
-	<section id="about" class="three">
-		<div class="container">
-
-			<header>
-				<h2>About Me</h2>
-			</header>
-
-			<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
-			<p>
-
-				(Placeholder Text)
-				Hey! I'm Sloth, a 21 year old Canadian designer and developer of 4 years, with 3 years dedicated to
-				User Interface and User Experience design.
-
-				I've been into games and creation all my life, now using Roblox to funnel my creativity and passion
-				in order to share what I care about with others, while making it high quality and worthwhile for all
-				players.
-
-				I give a rather unique, more innovative artistic approach with functionality at the forefront on my
-				designs compared to almost all others on the platform, leading to an immersive and special identity
-				for the games I work on.
-				When I work on a project, I focus on having a thorough consistency with the game's atmosphere and
-				purpose of each component, bringing the player into the world and action.
-			</p>
-
-		</div>
-	</section>
-
-	<!-- Contact -->
-	<section id="contact" class="four">
-		<div class="container">
-
-			<header>
-				<h2>Contact</h2>
-			</header>
-
-			<p>Elementum sem parturient nulla quam placerat viverra
-				mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-				donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-				orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
-
-			<form method="post" action="#">
-				<div class="row">
-					<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-					<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-					<div class="col-12">
-						<textarea name="message" placeholder="Message"></textarea>
-					</div>
-					<div class="col-12">
-						<input type="submit" value="Send Message" />
-					</div>
-				</div>
-			</form>
-
-		</div>
-	</section>
-
-</div>
-
-<!-- Footer -->
-<div id="footer">
-
-	<!-- Copyright -->
-	<ul class="copyright">
-		<li>&copy; Untitled. All rights reserved.</li>
-		<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-	</ul>
-
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-<script>
-	// 1. Scroll Animation
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				entry.target.style.opacity = "1";
-				entry.target.style.transform = "translateY(0)";
-			}
-		});
-	}, { threshold: 0.1 });
-
-	document.querySelectorAll('.portfolio-card').forEach(card => {
-		card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-		card.style.opacity = "0";
-		card.style.transform = "translateY(30px)"; // Vertical slide feels smoother than horizontal
-		observer.observe(card);
-	});
-
-	// 2. Lightbox Zoom
-	const lightbox = document.getElementById('lightbox');
-	const lightboxImg = document.getElementById('lightbox-img');
-
-	document.querySelectorAll('.card-image img').forEach(img => {
-		img.style.cursor = 'zoom-in';
-		img.addEventListener('click', () => {
-			lightboxImg.src = img.src;
-			lightbox.classList.add('active');
-		});
-	});
-
-	lightbox.addEventListener('click', () => {
-		lightbox.classList.remove('active');
-	});
-</script>
-
-<div id="lightbox" class="lightbox">
-	<img class="lightbox-content" id="lightbox-img" src="">
-</div>
-
-<script>
-	// Use a "DOM Content Loaded" wrapper to prevent the "const" errors
-	document.addEventListener('DOMContentLoaded', () => {
-
-		// LIGHTBOX LOGIC
-		const lightbox = document.getElementById('lightbox');
-		const lightboxImg = document.getElementById('lightbox-img');
-		const images = document.querySelectorAll('.card-image img');
-
-		if (lightbox && lightboxImg) {
-			images.forEach(img => {
-				img.style.cursor = 'zoom-in';
-				img.addEventListener('click', () => {
-					lightboxImg.src = img.src;
-					lightbox.style.display = 'flex';
-				});
-			});
-
-			lightbox.addEventListener('click', () => {
-				lightbox.style.display = 'none';
-			});
-		}
-
-		// SCROLL ANIMATION LOGIC
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.style.opacity = "1";
-					entry.target.style.transform = "translateY(0)";
-				}
-			});
-		}, { threshold: 0.1 });
-
-		document.querySelectorAll('.portfolio-card').forEach(card => {
-			card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-			card.style.opacity = "0";
-			card.style.transform = "translateY(30px)";
-			observer.observe(card);
-		});
-	});
-</script>
-
-
-</body>
-
 </html>
