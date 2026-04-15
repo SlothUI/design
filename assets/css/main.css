@@ -2628,6 +2628,22 @@ input, select, textarea {
 
 				#footer .copyright li:first-child {
 					margin-top: 0;
+
+					/* Initial state: Small and at the top */
+#scroll-logo {
+    width: 100px;
+    height: auto;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    top: 0;
+}
+
+/* Scrolled state: Grows and moves down */
+#scroll-logo.is-scrolled {
+    width: 250px; /* Adjust growth size here */
+    top: 50px;    /* Adjust how far down it moves */
+    transform: scale(1.1);
+}
 				}
 
 	}
