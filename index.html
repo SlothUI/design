@@ -21,7 +21,51 @@
 	</div>
 
 	<div id="wrapper">
+
 	</div>
+	<script>
+		const cards = document.querySelectorAll('.portfolio-card');
+		window.addEventListener('scroll', () => {
+			const triggerBottom = window.innerHeight * 0.9;
+			cards.forEach(card => {
+				const cardTop = card.getBoundingClientRect().top;
+				if (cardTop < triggerBottom) {
+					let progress = (triggerBottom - cardTop) / 400;
+					progress = Math.min(Math.max(progress, 0), 1);
+					const xOffset = 100 - (progress * 100);
+					card.style.transform = `translateX(${xOffset}px)`;
+					card.style.opacity = progress;
+				} else {
+					card.style.opacity = 0;
+					card.style.transform = `translateX(100px)`;
+				}
+			});
+		});
+	</script>
+
+	<div id="lightbox" class="lightbox">
+		<span class="lightbox-close">&times;</span>
+		<img class="lightbox-content" id="lightbox-img">
+	</div>
+
+	<script>
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const portfolioImgs = document.querySelectorAll('.card-image img');
+		portfolioImgs.forEach(img => {
+			img.style.cursor = 'zoom-in';
+			img.addEventListener('click', () => {
+				lightboxImg.src = img.src;
+				lightbox.classList.add('active');
+			});
+		});
+		lightbox.addEventListener('click', (e) => {
+			if (e.target !== lightboxImg) lightbox.classList.remove('active');
+		});
+		document.addEventListener('keydown', (e) => {
+			if (e.key === "Escape") lightbox.classList.remove('active');
+		});
+	</script>
 </body>
 
 <!-- Header -->
