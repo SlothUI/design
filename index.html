@@ -202,19 +202,29 @@
 	<script>
 		const cards = document.querySelectorAll('.portfolio-card');
 
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry, index) => {
-				if (entry.isIntersecting) {
-					// Add a slight delay for each card (index * 200ms)
-					setTimeout(() => {
-						entry.target.classList.add('appear');
-					}, index * 200);
+		window.addEventListener('scroll', () => {
+			const triggerBottom = window.innerHeight * 0.9; // When the card hits the bottom 10% of screen
+
+			cards.forEach(card => {
+				const cardTop = card.getBoundingClientRect().top;
+
+				if (cardTop < triggerBottom) {
+					// Calculate progress: 0 when just entering, 1 when fully in view
+					let progress = (triggerBottom - cardTop) / 400;
+					progress = Math.min(Math.max(progress, 0), 1); // Keep between 0 and 1
+
+					// Tie movement directly to scroll progress
+					// It starts 100px to the right and slides to 0px
+					const xOffset = 100 - (progress * 100);
+					const opacity = progress;
+
+					card.style.transform = `translateX(${xOffset}px)`;
+					card.style.opacity = opacity;
+				} else {
+					card.style.opacity = 0;
+					card.style.transform = `translateX(100px)`;
 				}
 			});
-		}, { threshold: 0.2 }); // Triggers when 20% of the card is visible
-
-		cards.forEach(card => {
-			observer.observe(card);
 		});
 	</script>
 
