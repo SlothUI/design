@@ -262,64 +262,86 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-	const cards = document.querySelectorAll('.portfolio-card');
-
-	window.addEventListener('scroll', () => {
-		const triggerBottom = window.innerHeight * 0.9; // When the card hits the bottom 10% of screen
-
-		cards.forEach(card => {
-			const cardTop = card.getBoundingClientRect().top;
-
-			if (cardTop < triggerBottom) {
-				// Calculate progress: 0 when just entering, 1 when fully in view
-				let progress = (triggerBottom - cardTop) / 400;
-				progress = Math.min(Math.max(progress, 0), 1); // Keep between 0 and 1
-
-				// Tie movement directly to scroll progress
-				// It starts 100px to the right and slides to 0px
-				const xOffset = 100 - (progress * 100);
-				const opacity = progress;
-
-				card.style.transform = `translateX(${xOffset}px)`;
-				card.style.opacity = opacity;
-			} else {
-				card.style.opacity = 0;
-				card.style.transform = `translateX(100px)`;
+	// 1. Scroll Animation
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.style.opacity = "1";
+				entry.target.style.transform = "translateY(0)";
 			}
 		});
+	}, { threshold: 0.1 });
+
+	document.querySelectorAll('.portfolio-card').forEach(card => {
+		card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
+		card.style.opacity = "0";
+		card.style.transform = "translateY(30px)"; // Vertical slide feels smoother than horizontal
+		observer.observe(card);
+	});
+
+	// 2. Lightbox Zoom
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img');
+
+	document.querySelectorAll('.card-image img').forEach(img => {
+		img.style.cursor = 'zoom-in';
+		img.addEventListener('click', () => {
+			lightboxImg.src = img.src;
+			lightbox.classList.add('active');
+		});
+	});
+
+	lightbox.addEventListener('click', () => {
+		lightbox.classList.remove('active');
 	});
 </script>
 
 <div id="lightbox" class="lightbox">
-	<span class="lightbox-close">&times;</span>
-	<img class="lightbox-content" id="lightbox-img">
+	<img class="lightbox-content" id="lightbox-img" src="">
 </div>
 
 <script>
-	const lightbox = document.getElementById('lightbox');
-	const lightboxImg = document.getElementById('lightbox-img');
-	const portfolioImgs = document.querySelectorAll('.card-image img');
+	// Use a "DOM Content Loaded" wrapper to prevent the "const" errors
+	document.addEventListener('DOMContentLoaded', () => {
 
-	portfolioImgs.forEach(img => {
-		img.style.cursor = 'zoom-in';
-		img.addEventListener('click', () => {
-			lightboxImg.src = img.src;
-			lightbox.classList.add('active'); // This triggers the fade
+		// LIGHTBOX LOGIC
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const images = document.querySelectorAll('.card-image img');
+
+		if (lightbox && lightboxImg) {
+			images.forEach(img => {
+				img.style.cursor = 'zoom-in';
+				img.addEventListener('click', () => {
+					lightboxImg.src = img.src;
+					lightbox.style.display = 'flex';
+				});
+			});
+
+			lightbox.addEventListener('click', () => {
+				lightbox.style.display = 'none';
+			});
+		}
+
+		// SCROLL ANIMATION LOGIC
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.style.opacity = "1";
+					entry.target.style.transform = "translateY(0)";
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.portfolio-card').forEach(card => {
+			card.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
+			card.style.opacity = "0";
+			card.style.transform = "translateY(30px)";
+			observer.observe(card);
 		});
 	});
-
-	lightbox.addEventListener('click', (e) => {
-		if (e.target !== lightboxImg) {
-			lightbox.classList.remove('active');
-		}
-	});
-
-	document.addEventListener('keydown', (e) => {
-		if (e.key === "Escape") {
-			lightbox.classList.remove('active');
-		}
-	});
 </script>
+
 
 </body>
 
