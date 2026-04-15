@@ -2631,61 +2631,38 @@ input, select, textarea {
 				}
 
 	}
-/* Layout for the Wide Cards */
-.portfolio-card {
-    display: flex;
-    background: rgba(255, 255, 255, 0.05);
-    margin-bottom: 2em;
-    border-radius: 8px;
-    overflow: hidden;
-    align-items: center;
-    text-align: left;
-    transition: transform 0.3s ease;
-    
-    /* Animation start state */
-    opacity: 0;
-    transform: translateX(-50px);
+.portfolio-list {
+    perspective: 1000px; /* Adds 3D depth to the scroll */
 }
 
-.portfolio-card:hover {
-    background: rgba(255, 255, 255, 0.1);
+.portfolio-card {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 4em; /* More spacing for row feel */
+    border-radius: 12px;
+    align-items: center;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    /* Starting position: shifted right and invisible */
+    opacity: 0;
+    transform: translateX(100px); 
+    transition: opacity 0.5s ease-out; /* Smooth fade, but movement is tied to scroll */
 }
 
 .card-image {
-    flex: 1; /* Image takes up 40% */
-    max-width: 40%;
+    flex: 1.2; 
+    padding: 20px; /* Padding makes it look more like a "showcase" item */
 }
 
 .card-image img {
     width: 100%;
-    height: 200px; /* Adjust height for "shortness" */
-    object-fit: cover;
-    display: block;
+    height: auto; /* Contextual: keeps the image aspect ratio */
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .card-content {
-    flex: 1.5; /* Text takes up 60% */
-    padding: 2em;
-}
-
-.card-content h3 {
-    margin-bottom: 0.5em;
-    color: #fff;
-}
-
-/* Mobile Responsive: Stack them back to vertical images */
-@media screen and (max-width: 736px) {
-    .portfolio-card {
-        flex-direction: column;
-    }
-    .card-image {
-        max-width: 100%;
-    }
-}
-
-/* The Animation Trigger Class */
-.portfolio-card.appear {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.8s ease-out;
+    flex: 1;
+    padding: 3em;
 }
