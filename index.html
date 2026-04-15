@@ -213,15 +213,16 @@
 
 
 	<script>
-    window.onscroll = function() {
-        var logo = document.getElementById("scroll-logo");
-        // Adjust '100' to change how soon the animation triggers
-        if (window.pageYOffset > 100) {
+    const logo = document.getElementById("scroll-logo");
+    
+    window.addEventListener("scroll", () => {
+        // Triggers after scrolling 80 pixels
+        if (window.scrollY > 80) {
             logo.classList.add("is-scrolled");
         } else {
             logo.classList.remove("is-scrolled");
         }
-    };
+    });
 </script>
 
 </body>
