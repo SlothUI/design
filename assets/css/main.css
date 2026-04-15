@@ -1046,3 +1046,28 @@ section.two, section.three, section.four { padding: 3em 0; }
 
     #footer .copyright li:first-child { margin-top: 0; }
 }
+
+/* ========================================= Pasted Gemini Code ============================================ */
+
+
+/* --- WHITE TEXT OVERRIDE --- */
+
+/* Base text color for paragraphs, lists, and general reading */
+body, p, li, span, .card-content p {
+    color: #ffffff !important; 
+}
+
+/* Ensure all headings stand out in pure white */
+h1, h2, h3, h4, h5, h6, #title {
+    color: #ffffff !important;
+}
+
+/* Keep standard links white, but retain a cool hover effect so users know they are clickable */
+a {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #8a2be2; /* Retains the Dark Void purple on hover */
+}
