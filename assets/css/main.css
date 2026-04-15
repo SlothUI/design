@@ -1,24 +1,20 @@
-/* SLOTH DESIGNING - MASTER STYLES 
-    Cleaned, Optimized, and Unified
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap');
 
-/* --- 1. THE FOUNDATION (Void Aesthetic) --- */
-* {
-    box-sizing: border-box;
+/* --- RESET & CORE --- */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, li, section, header, footer {
+    margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
 }
 
-html, body {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+body {
     background-color: #020202 !important;
     color: #aaaaaa;
     font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
+    line-height: 1.75;
     overflow-x: hidden;
 }
 
-/* Force headings to use the sharp Syne font */
 h1, h2, h3, h4, h5, h6, strong {
     font-family: 'Syne', sans-serif !important;
     color: #ffffff !important;
@@ -26,136 +22,130 @@ h1, h2, h3, h4, h5, h6, strong {
     letter-spacing: 0.1em;
 }
 
-/* --- 2. THE SIDEBAR (Fixed & Pinned) --- */
+/* --- SIDEBAR (THE FIX) --- */
 #header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 300px !important;
-    height: 100vh !important;
-    background: transparent !important;
-    padding: 3em 2em !important;
-    z-index: 1000;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #050505;
+    color: #fff;
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    text-align: right;
+    top: 0;
+    width: 300px;
+    z-index: 10000;
     border-right: 1px solid rgba(255,255,255,0.05);
 }
 
-#logo {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 2em !important;
-    text-align: right;
+#header .top { flex-grow: 1; }
+#header .bottom { padding: 2em 0; text-align: center; }
+
+#logo { padding: 3em 2em 1.5em 2em; }
+#logo .image.avatar48 {
+    display: block;
+    margin: 0 0 1em auto;
+    width: 48px;  /* Fixes the "Giant Avatar" bug */
+    height: 48px;
+    border-radius: 100%;
+    overflow: hidden;
 }
+#logo .image.avatar48 img { width: 100%; height: 100%; }
 
-#logo h1 { font-size: 1.5em; margin: 0; }
-#logo p { font-size: 0.7em; color: #888; margin: 0; }
-
-nav ul { list-style: none; padding: 0; margin-top: 2em; text-align: right; }
-nav ul li { margin-bottom: 1.5em; }
-nav ul li a { 
-    color: #ffffff !important; 
-    text-decoration: none; 
-    font-size: 0.8em; 
-    letter-spacing: 0.2em;
-    opacity: 0.5;
+#nav ul { list-style: none; }
+#nav ul li a {
+    display: block;
+    padding: 0.75em 2em;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
     transition: 0.3s;
+    font-size: 0.8em;
+    letter-spacing: 0.15em;
 }
-nav ul li a:hover, nav ul li a.active { opacity: 1; color: #8a2be2 !important; }
+#nav ul li a:hover, #nav ul li a.active {
+    color: #8a2be2;
+    background: rgba(255,255,255,0.02);
+}
 
-/* --- 3. MAIN CONTENT AREA --- */
+/* --- MAIN CONTENT --- */
 #main {
-    margin-left: 300px !important; /* Matches sidebar width */
-    padding: 0 !important;
+    margin-left: 300px;
 }
 
 #main > section {
-    padding: 4em 4em !important; /* Adjust for top spacing */
-    border: none !important;
-    background: transparent !important;
-}
-
-/* The Intro Section (Logo Cluster) */
-section.one {
-    padding-top: 2em !important; /* Pulls logo up */
+    padding: 6em 4em;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
-/* --- 4. THE PORTFOLIO CARDS (Side-by-Side) --- */
-.portfolio-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    margin-bottom: 4rem !important;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.4s ease;
-}
-
-.portfolio-card:hover {
-    background: rgba(255, 255, 255, 0.04) !important;
-}
-
-/* Left Side (Image) */
-.card-image {
-    flex: 0 0 55% !important;
-    padding: 2em !important;
-}
-
-.card-image img {
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
     width: 100%;
-    height: auto;
-    border-radius: 4px;
+}
+
+/* --- PORTFOLIO CARDS (THE 50/50 SPLIT) --- */
+.portfolio-list {
+    margin-top: 3em;
+}
+
+.portfolio-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 3em;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-image { flex: 0 0 50%; padding: 1.5em; }
+.card-image img { 
+    width: 100%; 
+    border-radius: 6px; 
     cursor: zoom-in;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Right Side (Text) */
-.card-content {
-    flex: 0 0 45% !important;
-    padding: 3em !important;
-    text-align: left;
+.card-content { flex: 0 0 50%; padding: 3em; }
+
+/* --- BUTTONS --- */
+.button {
+    display: inline-block;
+    padding: 0.75em 2em;
+    background: #8a2be2;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: 0.3s;
 }
+.button:hover { background: #4b0082; transform: translateY(-2px); }
 
-.card-content h3 { font-size: 1.2em; margin-bottom: 1em; }
-.card-content p { font-size: 0.9em; line-height: 1.6; color: #888; }
-
-/* --- 5. LIGHTBOX (Zoom) --- */
+/* --- LIGHTBOX --- */
 .lightbox {
     display: none;
     position: fixed;
-    z-index: 99999;
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(10px);
+    z-index: 20000;
     justify-content: center;
     align-items: center;
-    cursor: zoom-out;
 }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
 
-#nebula-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    z-index: -1;
-    pointer-events: none;
-.lightbox-content {
-    max-width: 90%;
-    max-height: 85%;
-    border-radius: 8px;
-}
-
-/* --- 6. NEBULA & UTILITIES --- */
-}
-
+/* --- RESPONSIVE --- */
 @media screen and (max-width: 960px) {
-    #header { position: relative !important; width: 100% !important; height: auto !important; }
-    #main { margin-left: 0 !important; }
-    .portfolio-card { flex-direction: column !important; }
-    .card-image, .card-content { flex: 0 0 100% !important; }
+    #header { width: 100%; position: relative; height: auto; text-align: center; }
+    #logo .image.avatar48 { margin: 0 auto 1em auto; }
+    #main { margin-left: 0; }
+    .portfolio-card { flex-direction: column; }
+    .card-image, .card-content { flex: 0 0 100%; }
 }
