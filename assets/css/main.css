@@ -2638,7 +2638,7 @@ input, select, textarea {
 .portfolio-card {
     display: flex;
     background: rgba(255, 255, 255, 0.03);
-    margin-bottom: 4em; /* More spacing for row feel */
+    margin-bottom: 2.7em; /* More spacing for row feel */
     border-radius: 12px;
     align-items: center;
     text-align: left;
