@@ -2877,16 +2877,28 @@ body {
     overflow-x: hidden;
 }
 
-/* 2. The Nebula Container */
+/* 1. Push the Nebula to the absolute basement */
 .nebula-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Sits behind everything */
+    width: 100vw;
+    height: 100vh;
+    z-index: -9999 !important; /* Extremely low number */
+    pointer-events: none; 
     background: #020202;
-    overflow: hidden;
+}
+
+/* 2. Pull the Wrapper to the front */
+#wrapper {
+    position: relative;
+    z-index: 1; /* Anything higher than the nebula */
+}
+
+/* 3. Ensure the main content sections are visible */
+#main, #header, #footer {
+    position: relative;
+    z-index: 2;
 }
 
 /* 3. The Blobs */
