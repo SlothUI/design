@@ -64,7 +64,7 @@
 			<div class="container">
 
 				<header>
-					<img src="images/logo.png" alt="Sloth UI Logo"
+					<img src="images/logo.png" id="scroll-logo" alt="Sloth UI Logo">
 						style="max-width: 720px; height: auto; margin-bottom: 20px;">
 
 					<p style="font-size: 1.2em; color: rgba(255,255,255,0.75);">
@@ -210,6 +210,19 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+
+
+	<script>
+    window.onscroll = function() {
+        var logo = document.getElementById("scroll-logo");
+        // Adjust '100' to change how soon the animation triggers
+        if (window.pageYOffset > 100) {
+            logo.classList.add("is-scrolled");
+        } else {
+            logo.classList.remove("is-scrolled");
+        }
+    };
+</script>
 
 </body>
 
