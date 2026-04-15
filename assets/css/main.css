@@ -2668,29 +2668,56 @@ input, select, textarea {
 }
 
 /* 1. Return to Contextual Scaling */
+/* 1. Force Side-by-Side Layout */
 .portfolio-card {
+    display: flex !important;
+    flex-direction: row !important; /* CRITICAL: Forces left/right split */
+    align-items: center !important;
+    flex-wrap: nowrap !important; /* Prevents text from falling below the image */
     background: rgba(255, 255, 255, 0.03) !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    padding: 0 !important; /* Let the image and text handle padding */
+    padding: 0 !important; 
+    border-radius: 4px;
+    margin-bottom: 3.5rem !important;
     overflow: hidden;
-    margin-bottom: 3rem !important;
 }
 
+/* 2. The Image Side (Left) */
 .card-image {
-    flex: 1.5; /* Larger image area */
-    padding: 20px; /* Space around the image to make it look "framed" */
+    flex: 0 0 55% !important; /* Image takes exactly 55% of the width */
+    padding: 2.5em !important; /* Gives it that nice framed look */
 }
 
 .card-image img {
     width: 100%;
-    height: auto; /* CONTEXTUAL: Keeps original aspect ratio */
+    height: auto;
     display: block;
     border-radius: 4px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transition: transform 0.3s ease;
 }
 
+.card-image img:hover {
+    transform: scale(1.02); /* Slight hover effect to encourage clicking */
+}
+
+/* 3. The Text Side (Right) */
 .card-content {
-    padding: 2.5rem !important;
+    flex: 0 0 45% !important; /* Text takes the remaining 45% */
+    padding: 3em !important;
+    padding-left: 1em !important; /* Brings text slightly closer to the image */
+}
+
+/* 4. Mobile Layout (Stacks them ONLY on small screens) */
+@media (max-width: 900px) {
+    .portfolio-card {
+        flex-direction: column !important;
+    }
+    .card-image, .card-content {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        padding: 2em !important;
+    }
 }
 
 /* 2. Polish the Void Backgrounds */
@@ -2759,30 +2786,32 @@ body {
     padding: 1.5em;
     margin-bottom: 1em;
 }
-/* --- Sidebar / Nav Aesthetics Do-Over --- */
-
+/* 1. Un-cramp and Align the Sidebar */
 #header {
-    background: rgba(10, 10, 12, 0.9) !important; /* Forces the deep dark color */
-    backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* CRITICAL: Forces everything to the absolute top */
+    align-items: flex-end !important; /* Aligns text to the right side of the sidebar */
+    padding: 3.5em 3em !important; /* Gives it breathing room (Top/Bottom, Left/Right) */
+    background: transparent !important;
+    top: 0 !important;
+    height: 100vh !important; /* Ensures it spans the full height */
 }
 
-/* This targets the navigation links */
-#nav ul li a {
-    color: #a0a0a0;
-    transition: all 0.3s ease;
+/* 2. Kill any hidden spacers pushing the logo down */
+#logo {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: translateY(0) !important; /* Stops the template from centering it */
 }
 
-#nav ul li a:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
+/* 3. Give Nav Links room to breathe */
+#header nav {
+    margin-top: 3em !important; /* Adds space between Logo and Links */
 }
 
-/* This highlights the section you are currently viewing */
-#nav ul li a.active {
-    background: rgba(255, 255, 255, 0.07) !important;
-    color: #fff !important;
-    box-shadow: inset 4px 0 0 #8a2be2; /* That accent color we picked */
+#header nav ul li {
+    margin-bottom: 1.5em !important; /* Spreads out the menu items */
 }
 
 /* --- THE VOID: Sidebar & Global Tightening --- */
