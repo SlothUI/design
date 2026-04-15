@@ -199,6 +199,25 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
+	<script>
+		const cards = document.querySelectorAll('.portfolio-card');
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting) {
+					// Add a slight delay for each card (index * 200ms)
+					setTimeout(() => {
+						entry.target.classList.add('appear');
+					}, index * 200);
+				}
+			});
+		}, { threshold: 0.2 }); // Triggers when 20% of the card is visible
+
+		cards.forEach(card => {
+			observer.observe(card);
+		});
+	</script>
+
 </body>
 
 </html>
