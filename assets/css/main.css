@@ -2960,3 +2960,26 @@ body {
 #main > section, .container, #header {
     background: transparent !important; /* Makes sure the template doesn't block the nebula */
 }
+
+
+
+
+
+/* FORCE LOGO TO TOP */
+#header {
+    top: 0 !important;
+    padding-top: 1.5em !important; /* Adjust this to nudge the logo up/down */
+    background: transparent !important; /* Let the nebula show through */
+}
+
+#wrapper {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Ensure the main content isn't pushed down by the invisible nebula div */
+.nebula-container {
+    display: block;
+    height: 0; 
+    width: 0;
+}
