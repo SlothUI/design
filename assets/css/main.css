@@ -1047,27 +1047,415 @@ section.two, section.three, section.four { padding: 3em 0; }
     #footer .copyright li:first-child { margin-top: 0; }
 }
 
-/* ========================================= Pasted Gemini Code ============================================ */
+/* =============================================
+   SPLASH SCREEN
+   ============================================= */
 
-
-/* --- WHITE TEXT OVERRIDE --- */
-
-/* Base text color for paragraphs, lists, and general reading */
-body, p, li, span, .card-content p {
-    color: #ffffff !important; 
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #020202;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: default;
 }
 
-/* Ensure all headings stand out in pure white */
-h1, h2, h3, h4, h5, h6, #title {
+#splash-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.splash-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4em;
+}
+
+.splash-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65em;
+    letter-spacing: 0.35em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.splash-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5em, 10vw, 7em);
+    font-weight: 800;
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.splash-title span {
+    background: linear-gradient(135deg, #8a2be2 0%, #c77dff 50%, #4b0082 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    filter: drop-shadow(0 0 30px rgba(138,43,226,0.6));
+}
+
+#splash-enter {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85em 3em;
+    margin-top: 0.5em;
+    background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%);
+    border: 1px solid rgba(138,43,226,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(138,43,226,0.35), inset 0 0 20px rgba(138,43,226,0.1);
+    animation: splashPulse 2.5s ease-in-out infinite;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#splash-enter:hover {
+    box-shadow: 0 0 50px rgba(138,43,226,0.7), inset 0 0 30px rgba(138,43,226,0.2);
+    transform: translateY(-2px);
+}
+
+#splash-enter .btn-ring {
+    position: absolute;
+    inset: -3px;
+    border: 1px solid rgba(138,43,226,0.4);
+    border-radius: 4px;
+    animation: ringExpand 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes splashPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(138,43,226,0.35), inset 0 0 20px rgba(138,43,226,0.1); }
+    50%       { box-shadow: 0 0 55px rgba(138,43,226,0.65), inset 0 0 30px rgba(138,43,226,0.2); }
+}
+
+@keyframes ringExpand {
+    0%   { opacity: 1;   transform: scale(1); }
+    100% { opacity: 0;   transform: scale(1.25); }
+}
+
+.splash-hint {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.6em;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* =============================================
+   AUDIO TOGGLE
+   ============================================= */
+
+#audio-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 42px;
+    height: 42px;
+    background: rgba(10,10,12,0.8);
+    border: 1px solid rgba(138,43,226,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    backdrop-filter: blur(10px);
+    padding: 0;
+}
+
+#audio-toggle svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+#audio-toggle:hover {
+    color: #fff;
+    border-color: rgba(138,43,226,0.7);
+    box-shadow: 0 0 14px rgba(138,43,226,0.4);
+}
+
+#audio-toggle.muted {
+    color: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.08);
+}
+
+/* =============================================
+   SHOOTING STARS CANVAS
+   ============================================= */
+
+#shooting-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+
+* { cursor: none !important; }
+
+#cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+    will-change: transform;
+}
+
+#cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(138,43,226,0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999998;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
+    will-change: transform;
+}
+
+#cursor-ring.expanded {
+    width: 54px;
+    height: 54px;
+    border-color: rgba(138,43,226,0.5);
+}
+
+#cursor-ring.pulse {
+    animation: cursorPulse 0.35s ease;
+}
+
+@keyframes cursorPulse {
+    0%   { transform: translate(-50%, -50%) scale(1); }
+    40%  { transform: translate(-50%, -50%) scale(0.75); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* =============================================
+   VOID BUTTON REDESIGN
+   ============================================= */
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button:not(#splash-enter):not(#audio-toggle):not(.tab-btn),
+.button {
+    background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%) !important;
+    background-image: none !important;
+    border: 1px solid rgba(138,43,226,0.5) !important;
+    box-shadow: 0 0 20px rgba(138,43,226,0.25);
+    letter-spacing: 0.1em;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+    animation: voidButtonGlow 3s ease-in-out infinite;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+.button:hover {
+    background: linear-gradient(135deg, #9d3ef5 0%, #5c0099 100%) !important;
+    box-shadow: 0 0 35px rgba(138,43,226,0.55) !important;
+    transform: translateY(-2px);
+}
+
+@keyframes voidButtonGlow {
+    0%, 100% { box-shadow: 0 0 18px rgba(138,43,226,0.2); }
+    50%       { box-shadow: 0 0 30px rgba(138,43,226,0.45); }
+}
+
+/* =============================================
+   SIDEBAR REFINEMENTS
+   ============================================= */
+
+/* Social icons — white with purple glow on hover */
+#header .bottom ul.icons a {
     color: #ffffff !important;
+    font-size: 1.1em;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
-/* Keep standard links white, but retain a cool hover effect so users know they are clickable */
-a {
+#header .bottom ul.icons a:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(138,43,226,0.9), 0 0 25px rgba(138,43,226,0.5);
+}
+
+/* Nav font scaling */
+#nav ul li a {
+    font-size: 0.72em;
+    letter-spacing: 0.22em;
+    padding: 0.95em 1.5em;
+}
+
+/* Center icon+text pairs */
+#nav ul li a span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7em;
+    font-size: 1em;
+}
+
+#nav ul li a span:before {
+    position: static;
+    line-height: 1;
+    width: auto;
+}
+
+/* =============================================
+   CONTACT GLASSMORPHISM INPUTS
+   ============================================= */
+
+#contact form input[type="text"],
+#contact form input[type="email"],
+#contact form input[type="password"],
+#contact form select,
+#contact form textarea {
+    background: rgba(255,255,255,0.04) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05) !important;
+    color: #fff !important;
+    border-radius: 4px;
+}
+
+#contact form input[type="text"]:focus,
+#contact form input[type="email"]:focus,
+#contact form textarea:focus {
+    background: rgba(255,255,255,0.07) !important;
+    border-color: rgba(138,43,226,0.6) !important;
+    box-shadow: 0 0 16px rgba(138,43,226,0.2) !important;
+    outline: none;
+}
+
+#contact form ::placeholder { color: rgba(255,255,255,0.3) !important; }
+
+/* =============================================
+   PORTFOLIO TABS
+   ============================================= */
+
+.portfolio-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    margin-bottom: 2.5em;
+}
+
+.tab-btn {
+    padding: 0.55em 1.8em;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.tab-btn:hover {
+    color: #fff;
+    border-color: rgba(138,43,226,0.5);
+}
+
+.tab-btn.active {
+    color: #fff;
+    background: rgba(138,43,226,0.15);
+    border-color: rgba(138,43,226,0.7);
+    box-shadow: 0 0 16px rgba(138,43,226,0.25);
+}
+
+/* =============================================
+   PORTFOLIO CARD SCROLL REVEAL
+   ============================================= */
+
+.portfolio-card {
+    opacity: 0;
+    transform: translateY(28px);
+}
+
+.portfolio-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card tag badge */
+.card-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.55em;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8a2be2;
+    border: 1px solid rgba(138,43,226,0.4);
+    padding: 0.25em 0.75em;
+    border-radius: 2px;
+    margin-bottom: 0.75em;
+    display: block;
+}
+
+/* =============================================
+   INTRO SECTION — PURE VOID (no bg image)
+   ============================================= */
+
+#main > section.one {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* =============================================
+   GLOBAL TEXT — ENSURE WHITE
+   ============================================= */
+
+#main p, #main li, #main label, #footer {
+    color: rgba(255,255,255,0.65);
+}
+
+#main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
     color: #ffffff;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #8a2be2; /* Retains the Dark Void purple on hover */
 }
