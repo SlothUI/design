@@ -1222,42 +1222,46 @@ section.two, section.three, section.four { padding: 3em 0; }
    CUSTOM CURSOR
    ============================================= */
 
-* { cursor: none !important; }
-
+/* --- CUSTOM CURSOR VISUALS --- */
 #cursor-dot {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 6px;
     height: 6px;
-    background: #fff;
+    background: #8a2be2;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 999999;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.2s ease;
-    will-change: transform;
+    z-index: 99999; /* Ensure it's above the splash screen */
+    box-shadow: 0 0 15px 2px #8a2be2;
+    transition: opacity 0.3s ease;
 }
 
 #cursor-ring {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(138,43,226,0.7);
+    top: 0; left: 0;
+    width: 100px; /* Bigger circle */
+    height: 100px;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 999998;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
-    will-change: transform;
+    z-index: 99998;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+    
+    /* 1. The Dot Pattern */
+    background-image: radial-gradient(#8a2be2 1px, transparent 1px);
+    background-size: 10px 10px;
+
+    /* 2. The Fade-Off Effect (Masking) */
+    /* This makes the dots bright in the middle and invisible at the edges */
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 70%);
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 70%);
+    
+    border: 1px solid rgba(138, 43, 226, 0.2);
 }
 
 #cursor-ring.expanded {
-    width: 54px;
-    height: 54px;
-    border-color: rgba(138,43,226,0.5);
+    width: 150px;
+    height: 150px;
+    background-size: 12px 12px;
 }
 
 #cursor-ring.pulse {
