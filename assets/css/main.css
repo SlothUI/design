@@ -1271,3 +1271,49 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     .sidebar-stats { margin: 0 0.5em 1.2em; }
     .stat-value { font-size: 0.75em; }
 }
+
+
+/*----------------------------------------------------------------------*/
+
+#terms .terms-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#terms h3 {
+    color: #8a2be2;
+    margin-bottom: 1rem;
+}
+
+.terms-list {
+    list-style: none;
+    padding: 0;
+}
+
+.terms-list li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Custom Purple Bullet Point */
+.terms-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #8a2be2;
+    font-weight: bold;
+}
+
+.terms-list li strong {
+    color: #fff;
+    font-weight: 600;
+}
