@@ -838,6 +838,22 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     transition: text-shadow 0.25s ease, transform 0.2s ease;
     border: 0;
 }
+#header .bottom ul.icons a.custom-social-icon {
+    width: 2em;
+    height: 2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+#header .bottom ul.icons a.custom-social-icon svg {
+    width: 1.1em;
+    height: 1.1em;
+    display: block;
+    fill: currentColor;
+}
+#header .bottom ul.icons a.custom-social-icon svg * {
+    fill: currentColor;
+}
 #header .bottom ul.icons a:hover {
     color: #ffffff !important;
     text-shadow: 0 0 14px rgba(138,43,226,1), 0 0 30px rgba(138,43,226,0.6);
@@ -880,6 +896,10 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     width: 20px;
     height: 20px;
     display: block;
+    fill: currentColor;
+}
+
+.footer-social-link svg * {
     fill: currentColor;
 }
 
