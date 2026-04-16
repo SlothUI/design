@@ -1459,3 +1459,46 @@ input[type="reset"]:hover,
 #main h1, #main h2, #main h3, #main h4, #main h5, #main h6 {
     color: #ffffff;
 }
+
+
+/* ---------------------------------------------------------- */
+
+
+/* Cursor Dot Glow */
+#cursor-dot {
+    background: #8a2be2;
+    box-shadow: 0 0 15px 5px rgba(138, 43, 226, 0.5);
+    z-index: 10001;
+}
+
+/* Cursor Ring Dot Pattern */
+#cursor-ring {
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    /* This creates the dot pattern around the ring */
+    background-image: radial-gradient(rgba(138, 43, 226, 0.2) 1px, transparent 1px);
+    background-size: 8px 8px; 
+    z-index: 10000;
+}
+
+/* Particle Styling */
+.particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #8a2be2;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10002;
+    animation: particleFade 0.6s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+    }
+}
