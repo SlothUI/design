@@ -1275,45 +1275,56 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
 
 /*----------------------------------------------------------------------*/
 
-#terms .terms-box {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(138, 43, 226, 0.2);
-    border-radius: 12px;
-    padding: 2.5rem;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
+<style>
+    /* --- RESTORE CURSOR & SCROLL --- */
+    #cursor-dot, #cursor-ring {
+        z-index: 999999 !important; /* Force to top */
+        pointer-events: none;
+    }
 
-#terms h3 {
-    color: #8a2be2;
-    margin-bottom: 1rem;
-}
+    /* --- TERMS & CONDITIONS SECTION --- */
+    #terms .terms-box {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        border-radius: 15px;
+        padding: 2.5rem;
+        max-width: 900px;
+        margin: 20px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        text-align: left;
+    }
 
-.terms-list {
-    list-style: none;
-    padding: 0;
-}
+    #terms h2 {
+        color: #fff;
+        margin-bottom: 1.5rem;
+    }
 
-.terms-list li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-    color: rgba(255, 255, 255, 0.8);
-}
+    .terms-list {
+        list-style: none;
+        padding: 0;
+    }
 
-/* Custom Purple Bullet Point */
-.terms-list li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #8a2be2;
-    font-weight: bold;
-}
+    .terms-list li {
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        padding-left: 1.5rem;
+        position: relative;
+    }
 
-.terms-list li strong {
-    color: #fff;
-    font-weight: 600;
-}
+    .terms-list li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #8a2be2;
+    }
+
+    /* Prevent mobile overflow */
+    @media screen and (max-width: 736px) {
+        #terms .terms-box {
+            padding: 1.5rem;
+            margin: 10px;
+        }
+    }
+</style>
