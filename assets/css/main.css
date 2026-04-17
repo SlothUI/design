@@ -36,7 +36,7 @@
 #cursor-ring {
     width: 44px; height: 44px;
     border-radius: 50%;
-    border: 1.5px solid rgba(138,43,226,0.25);
+    border: 1.5px solid rgba(138,43,226,0.65);
     /* Brighter dot pattern — increased opacity from 0.18 → 0.45 */
     background-image: radial-gradient(rgba(138,43,226,0.45) 1.5px, transparent 1.5px);
     background-size: 9px 9px;
@@ -854,42 +854,6 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     border-top: 1px solid rgba(138,43,226,0.08);
     padding: 2.5em 0 3em 0; font-size: 0.75em; color: rgba(255,255,255,0.2);
 }
-
-.footer-socials {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.9em;
-    margin: 0 0 1.5em 0;
-}
-
-.footer-social-link {
-    width: 48px;
-    height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.02);
-    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.footer-social-link svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-    fill: currentColor;
-}
-
-.footer-social-link:hover {
-    color: #8a2be2 !important;
-    border-color: rgba(138,43,226,0.45) !important;
-    box-shadow: 0 0 20px rgba(138,43,226,0.22);
-    transform: translateY(-2px);
-}
-
 #footer .copyright { cursor: default; margin: 0; }
 #footer .copyright li {
     display: inline-block; line-height: 1em;
@@ -1041,8 +1005,12 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
 .lightbox.active .lightbox-content { transform: translateY(-50%) scale(1); }
 .lightbox-close {
     position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-    color: #fff; font-size: 28px; background: rgba(255,255,255,0.08);
-    width: 50px; height: 50px; line-height: 50px; text-align: center; border-radius: 50%;
+    color: #fff; font-size: 26px;
+    background: rgba(255,255,255,0.08);
+    width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1; padding: 0;
+    border-radius: 50%;
     transition: background 0.2s, transform 0.2s;
 }
 .lightbox-close:hover { background: rgba(138,43,226,0.35); }
@@ -1192,122 +1160,8 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     transform: translateY(-2px); color: #fff !important; border-bottom: none;
 }
 
-.terms-card {
-    margin: 2.5em auto 0;
-    max-width: 980px;
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: 2em;
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(10,10,16,0.9) 0%, rgba(7,7,11,0.82) 100%);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(138,43,226,0.22);
-    border-radius: 10px;
-    padding: 2.35em;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
-.terms-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at top left, rgba(138,43,226,0.14) 0%, transparent 36%),
-        linear-gradient(90deg, rgba(138,43,226,0.12) 0, rgba(138,43,226,0) 30%);
-    pointer-events: none;
-}
-
-.terms-copy,
-.terms-list {
-    min-width: 0;
-    position: relative;
-    z-index: 1;
-}
-
-.terms-copy {
-    padding-right: 1.25em;
-    border-right: 1px solid rgba(255,255,255,0.06);
-}
-
-.terms-eyebrow {
-    margin: 0 0 0.95em 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.6em;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #8a2be2 !important;
-}
-
-.terms-card h3 {
-    margin: 0 0 0.7em 0;
-    font-size: 1.18em;
-    line-height: 1.15;
-    letter-spacing: 0.07em;
-}
-
-.terms-copy p:last-child {
-    margin: 0;
-    max-width: 28rem;
-    font-size: 0.78em;
-    line-height: 1.9;
-    color: rgba(255,255,255,0.58);
-}
-
-.terms-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 0.9em;
-}
-
-.terms-list li {
-    margin: 0;
-    padding: 1.1em 1.2em 1.1em 1.55em;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.018) 100%);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 6px;
-    font-size: 0.75em;
-    line-height: 1.82;
-    letter-spacing: 0.012em;
-    color: rgba(255,255,255,0.72);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
-}
-
-.terms-list li:hover {
-    transform: translateY(-2px);
-    border-color: rgba(138,43,226,0.22);
-    background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.02) 100%);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
-.terms-list li::before {
-    content: '';
-    position: absolute;
-    top: 0.75em;
-    bottom: 0.75em;
-    left: 0.65em;
-    width: 3px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, rgba(199,125,255,1) 0%, rgba(138,43,226,0.78) 100%);
-    box-shadow: 0 0 14px rgba(138,43,226,0.35);
-}
-
 @media screen and (max-width: 900px) {
     .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 2em auto 0; }
-    .terms-card { grid-template-columns: 1fr; max-width: 420px; }
-    .terms-copy {
-        padding-right: 0;
-        padding-bottom: 1.3em;
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
 }
 
 /* =============================================
@@ -1420,7 +1274,76 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     .tab-btn { padding: 0.55em 1.2em; font-size: 0.58em; }
     .sidebar-stats { margin: 0 0.5em 1.2em; }
     .stat-value { font-size: 0.75em; }
-    .terms-card { padding: 1.5em; }
+}
+
+/* =============================================
+   SIDEBAR SECTION LABEL
+   ============================================= */
+
+.sidebar-section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.42em;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+    text-align: center;
+    margin: 0 1.5em 0.55em;
+    padding: 0;
+    border: 0;
+    line-height: 1;
+    /* Subtle divider above */
+    padding-top: 1.4em;
+    border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* =============================================
+   FOOTER SOCIAL ICONS
+   ============================================= */
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9em;
+    margin: 0 0 1.5em 0;
+}
+
+.footer-social-link {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.6) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.02);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
+    border-bottom: none !important;
+}
+
+/* SVGs inside footer links — force uniform 20×20 and perfect centering */
+.footer-social-link svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+    fill: currentColor;
+    /* Some SVGs have non-square viewBoxes; contain ensures they fit without distortion */
+    object-fit: contain;
+}
+
+.footer-social-link:hover {
+    color: #c77dff !important;
+    border-color: rgba(138,43,226,0.5) !important;
+    box-shadow: 0 0 20px rgba(138,43,226,0.25);
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 736px) {
     .footer-socials { gap: 0.65em; }
     .footer-social-link { width: 44px; height: 44px; }
 }
