@@ -863,26 +863,31 @@ input[type="reset"]:active, .button:active { transform: translateY(0); }
     margin: 0 0 1.5em 0;
 }
 
-/* SVGs inside footer links — force uniform 20×20 and perfect centering */
+.footer-social-link {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.02);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
 
 .footer-social-link svg {
     width: 20px;
     height: 20px;
     display: block;
-    flex-shrink: 0;
     fill: currentColor;
-    /* Some SVGs have non-square viewBoxes; contain ensures they fit without distortion */
-    object-fit: contain;
 }
+
 .footer-social-link:hover {
-    color: #c77dff !important;
-    border-color: rgba(138,43,226,0.5) !important;
-    box-shadow: 0 0 20px rgba(138,43,226,0.25);
+    color: #8a2be2 !important;
+    border-color: rgba(138,43,226,0.45) !important;
+    box-shadow: 0 0 20px rgba(138,43,226,0.22);
     transform: translateY(-2px);
-}
-@media screen and (max-width: 736px) {
-    .footer-socials { gap: 0.65em; }
-    .footer-social-link { width: 44px; height: 44px; }
 }
 
 #footer .copyright { cursor: default; margin: 0; }
