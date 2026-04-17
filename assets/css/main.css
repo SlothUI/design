@@ -36,7 +36,7 @@
 #cursor-ring {
     width: 44px; height: 44px;
     border-radius: 50%;
-    border: 1.5px solid rgba(138,43,226,0.65);
+    border: 1.5px solid rgba(138,43,226,0.25);
     /* Brighter dot pattern — increased opacity from 0.18 → 0.45 */
     background-image: radial-gradient(rgba(138,43,226,0.45) 1.5px, transparent 1.5px);
     background-size: 9px 9px;
