@@ -403,7 +403,7 @@ br.clear { clear: both; }
 }
 
 .image.avatar48 {
-    width: 42px; height: 42px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     border: 1px solid rgba(138,43,226,0.4);
     box-shadow: 0 0 10px rgba(138,43,226,0.35);
@@ -418,13 +418,13 @@ br.clear { clear: both; }
 }
 
 #logo h1 {
-    font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 800;
+    font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 800;
     color: #fff; line-height: 1; letter-spacing: 0.14em;
     text-transform: uppercase; margin: 0;
 }
 
 #logo p {
-    font-family: 'Inter', sans-serif; font-size: 0.58rem; font-weight: 400;
+    font-family: 'Inter', sans-serif; font-size: 0.52rem; font-weight: 400;
     color: rgba(255,255,255,0.3); line-height: 1;
     letter-spacing: 0.15em; text-transform: uppercase; margin: 0;
 }
@@ -638,7 +638,7 @@ br.clear { clear: both; }
 }
 
 .section-header p {
-    font-size: 1rem; color: rgba(255,255,255,0.45);
+    font-size: 0.95rem; color: rgba(255,255,255,0.4);
     max-width: 480px; margin: 0 auto;
     line-height: 1.7; letter-spacing: 0.01em;
 }
@@ -991,7 +991,6 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
                 visibility 0s linear 0s,
                 box-shadow 0.35s ease,
                 border-color 0.35s ease;
-    transition-delay: 0s !important;
 }
 
 .portfolio-card:hover {
@@ -1008,14 +1007,14 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
 }
 
 .card-content h3 {
-    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
     color: #fff; letter-spacing: 0.08em; text-transform: uppercase;
     margin: 0 0 0.8em 0; line-height: 1.2;
 }
 
 .card-content p {
-    font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 400;
-    line-height: 1.75; letter-spacing: 0.01em; color: rgba(255,255,255,0.48); margin: 0;
+    font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400;
+    line-height: 1.75; letter-spacing: 0.01em; color: rgba(255,255,255,0.38); margin: 0;
 }
 
 /* =============================================
@@ -1157,8 +1156,8 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
 }
 
 .pricing-desc {
-    font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 400;
-    line-height: 1.7; color: rgba(255,255,255,0.52);
+    font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 400;
+    line-height: 1.7; color: rgba(255,255,255,0.45);
     margin: 0 0 1.2em 0; flex: 1;
 }
 
@@ -1367,7 +1366,7 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
 
 .pricing-card {
     min-height: 470px;
-    padding: 2.05em 1.65em 5.5em;
+    padding: 2.05em 1.65em 5.1em;
     transform: none;
     filter: none;
 }
@@ -1380,7 +1379,7 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
 }
 
 .pricing-card::after {
-    inset: 0 0 4.5em 0;
+    inset: 0 0 3.35em 0;
     border-color: rgba(148,44,224,0.34);
     background:
         radial-gradient(circle at 50% 100%, rgba(119,19,198,0.13), transparent 38%),
@@ -1444,7 +1443,7 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
 }
 
 .pricing-cta-wrap {
-    bottom: 0.6em;
+    bottom: 0.18em;
     width: min(74%, 250px);
 }
 
@@ -1466,16 +1465,16 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
         0 18px 42px rgba(80,0,170,0.22);
 }
 
-/* ── btn-ring halo on pill & pricing buttons (mirrors #splash-enter .btn-ring) ── */
-.btn-pill::after,
 .pricing-cta::after {
     content: '';
-    position: absolute; inset: -5px;
-    border: 1px solid rgba(138,43,226,0.22);
+    position: absolute;
+    inset: 1px;
     border-radius: inherit;
-    animation: ringExpand 3s ease-in-out infinite;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.2), transparent 22%),
+        linear-gradient(315deg, rgba(219,115,255,0.24), transparent 28%);
     pointer-events: none;
-    mix-blend-mode: normal;
+    mix-blend-mode: screen;
 }
 
 .pricing-cta:hover {
@@ -1663,8 +1662,8 @@ form ::placeholder { color: rgba(255,255,255,0.2) !important; }
    ============================================= */
 
 #about p {
-    font-size: 0.95rem; line-height: 1.95;
-    letter-spacing: 0.01em; color: rgba(255,255,255,0.58);
+    font-size: 0.9rem; line-height: 1.95;
+    letter-spacing: 0.01em; color: rgba(255,255,255,0.5);
     max-width: 680px; margin-left: auto; margin-right: auto;
 }
 
