@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://formspree.io; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
 
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="New main CSS.css" />
 
     <!-- PRELOADER — inline style so it works before any CSS file loads -->
     <style>
@@ -81,7 +81,7 @@
 
     <div id="wrapper"></div>
 
-    <!-- HEADER / SIDEBAR -->
+    <!-- HEADER / TOP NAV -->
     <div id="header">
         <div class="top">
             <div id="logo">
@@ -115,8 +115,23 @@
                         <span class="stat-label">Peak CCU</span>
                     </div>
                 </div>
+                <div class="nav-socials" aria-label="Social links">
+                    <a href="https://x.com/sloth_ui" class="social-link nav-social-link" data-popup-type="visit"
+                        data-popup-label="Twitter" data-popup-url="https://x.com/sloth_ui" aria-label="Twitter"></a>
+                    <a href="#" class="social-link nav-social-link" data-popup-type="handle"
+                        data-popup-label="Discord" data-popup-handle="@slothui" aria-label="Discord"></a>
+                    <a href="https://www.instagram.com/sloth_ui/" class="social-link nav-social-link"
+                        data-popup-type="visit" data-popup-label="Instagram"
+                        data-popup-url="https://www.instagram.com/sloth_ui/" aria-label="Instagram"></a>
+                    <a href="https://www.artstation.com/sloth_ui" class="social-link nav-social-link"
+                        data-popup-type="visit" data-popup-label="ArtStation"
+                        data-popup-url="https://www.artstation.com/sloth_ui" aria-label="ArtStation"></a>
+                </div>
             </div>
         </div>
+    </div>
+    <div id="headerToggle">
+        <button class="toggle" type="button" aria-label="Toggle navigation"></button>
     </div>
 
     <!-- MAIN -->
@@ -125,7 +140,7 @@
         <!-- Intro — pure void -->
         <section id="top" class="one dark cover">
             <div class="container">
-                <header>
+                <header class="hero-content">
                     <img src="images/logo.png" alt="Sloth UI Logo"
                         style="max-width:640px;width:90%;height:auto;margin:0 auto 1.5em;display:block;">
                     <p style="font-size:1.1em;color:rgba(255,255,255,0.6);letter-spacing:0.03em;">
@@ -133,7 +148,7 @@
                     </p>
                 </header>
                 <footer>
-                    <a href="#portfolio" class="button scrolly">View Work</a>
+                    <a href="#portfolio" class="button scrolly btn-pill">View Work</a>
                 </footer>
             </div>
         </section>
@@ -141,7 +156,7 @@
         <!-- Portfolio -->
         <section id="portfolio" class="two">
             <div class="container">
-                <header>
+                <header class="section-header">
                     <h2>Portfolio</h2>
                     <p>High quality designs and unique game identities.</p>
                 </header>
@@ -337,7 +352,7 @@
         <!-- About Me -->
         <section id="about" class="three">
             <div class="container">
-                <header>
+                <header class="section-header">
                     <h2>About Me</h2>
                 </header>
                 <a href="#" class="image featured"><img src="images/narrowbanner.png" alt="" /></a>
@@ -361,7 +376,7 @@
         <!-- Pricing -->
         <section id="pricing" class="five">
             <div class="container">
-                <header>
+                <header class="section-header">
                     <h2>Pricing</h2>
                     <p>Transparent, straightforward rates. Every tier includes original concept work and full
                         communication throughout.</p>
@@ -381,7 +396,9 @@
                             <strong>Revisions:</strong>
                             +1 extra option &nbsp;·&nbsp; <strong>Importing:</strong> Not included.
                         </p>
-                        <a href="#contact" class="pricing-cta scrolly">Get Started</a>
+                        <div class="pricing-cta-wrap">
+                            <a href="#contact" class="pricing-cta scrolly">Get Started</a>
+                        </div>
                     </div>
 
                     <div class="pricing-card featured">
@@ -399,7 +416,9 @@
                             per
                             frame.
                         </p>
-                        <a href="#contact" class="pricing-cta scrolly">Get Started</a>
+                        <div class="pricing-cta-wrap">
+                            <a href="#contact" class="pricing-cta scrolly">Get Started</a>
+                        </div>
                     </div>
 
                     <div class="pricing-card">
@@ -417,7 +436,9 @@
                             <strong>Importing:</strong>
                             Included.
                         </p>
-                        <a href="#contact" class="pricing-cta scrolly">Get a Quote</a>
+                        <div class="pricing-cta-wrap">
+                            <a href="#contact" class="pricing-cta scrolly">Get a Quote</a>
+                        </div>
                     </div>
 
                 </div>
@@ -449,14 +470,14 @@
         <!-- Contact -->
         <section id="contact" class="four">
             <div class="container">
-                <header>
+                <header class="section-header contact-heading">
                     <h2>Contact</h2>
                     <p>Have a project in the works? Feel free to reach out, let's build something unforgettable.
                     </p>
                 </header>
                 <!--
                 -->
-                <form id="contact-form" method="POST" action="https://formspree.io/f/xwvalzwo" novalidate>
+                <form id="contact-form" class="contact-intake" method="POST" action="https://formspree.io/f/xwvalzwo" novalidate>
                     <input type="hidden" name="_subject" value="Portfolio Contact — Sloth Design">
                     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="row">
@@ -467,6 +488,41 @@
                         <div class="col-6 col-12-mobile">
                             <input type="email" id="field-email" name="email" placeholder="Email" maxlength="200"
                                 autocomplete="email" required />
+                        </div>
+                        <div class="col-6 col-12-mobile">
+                            <input type="text" id="field-discord" name="discord" placeholder="Discord username"
+                                maxlength="100" autocomplete="off" />
+                        </div>
+                        <div class="col-6 col-12-mobile">
+                            <select id="field-service" name="service_type" aria-label="Service type">
+                                <option value="">Service type</option>
+                                <option value="Single frame or HUD piece">Single frame or HUD piece</option>
+                                <option value="Full HUD / UI bundle">Full HUD / UI bundle</option>
+                                <option value="Full game GUI">Full game GUI</option>
+                                <option value="Icons / vectors / graphics">Icons / vectors / graphics</option>
+                                <option value="Not sure yet">Not sure yet</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-12-mobile">
+                            <select id="field-budget" name="budget_range" aria-label="Budget range">
+                                <option value="">Budget range</option>
+                                <option value="$100-$200">$100-$200</option>
+                                <option value="$200-$500">$200-$500</option>
+                                <option value="$500+">$500+</option>
+                                <option value="Robux payment">Robux payment</option>
+                                <option value="Game percentage">Game percentage</option>
+                                <option value="Need a quote">Need a quote</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-12-mobile">
+                            <select id="field-timeline" name="timeline" aria-label="Timeline">
+                                <option value="">Timeline</option>
+                                <option value="ASAP">ASAP</option>
+                                <option value="1-2 weeks">1-2 weeks</option>
+                                <option value="2-4 weeks">2-4 weeks</option>
+                                <option value="1+ month">1+ month</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
                         </div>
                         <div class="col-12">
                             <textarea id="field-message" name="message" placeholder="Message" maxlength="2000"
@@ -588,6 +644,52 @@
         })();
 
         document.addEventListener('DOMContentLoaded', () => {
+
+            (function initTopNavToggle() {
+                const toggle = document.querySelector('#headerToggle .toggle');
+                const navLinks = document.querySelectorAll('#nav a');
+                if (!toggle) return;
+
+                toggle.addEventListener('click', () => {
+                    document.body.classList.toggle('header-visible');
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => document.body.classList.remove('header-visible'));
+                });
+            })();
+
+            (function restoreNavVectors() {
+                document.querySelectorAll('.nav-social-link').forEach(link => {
+                    const source = document.querySelector(`.footer-social-link[aria-label="${link.getAttribute('aria-label')}"] svg`);
+                    if (!source) return;
+
+                    const svg = source.cloneNode(true);
+                    svg.removeAttribute('width');
+                    svg.removeAttribute('height');
+                    svg.setAttribute('aria-hidden', 'true');
+                    link.replaceChildren(svg);
+                });
+            })();
+
+            (function cleanEncodedText() {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+                const fixes = [
+                    [/\u00c2\u00b7/g, '\u00b7'],
+                    [/\u00e2\u20ac\u201c/g, '-'],
+                    [/\u00e2\u20ac\u201d/g, '-'],
+                    [/\u00e2\u20ac\u00a6/g, '...'],
+                    [/\u00e2\u2020\u2014/g, '\u2197']
+                ];
+
+                while (walker.nextNode()) {
+                    let value = walker.currentNode.nodeValue;
+                    fixes.forEach(([pattern, replacement]) => {
+                        value = value.replace(pattern, replacement);
+                    });
+                    walker.currentNode.nodeValue = value;
+                }
+            })();
 
             /* ── 1. SPLASH SCREEN ─────────────────────────────────── */
             (function initSplash() {
