@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://formspree.io; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
 
-    <link rel="stylesheet" href="assets/css/main.css" /> 
+    <link rel="stylesheet" href="New main CSS.css" />
 
     <!-- PRELOADER — inline style so it works before any CSS file loads -->
     <style>
@@ -924,20 +924,30 @@
                 const allCards = document.querySelectorAll('.portfolio-card');
                 const tabBtns = document.querySelectorAll('.tab-btn');
 
-                const revealObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
-                }, { threshold: 0.06 });
+                let revealObserver;
 
                 function armCards(cards) {
                     requestAnimationFrame(() => {
                         cards.forEach((card, i) => {
-                            revealObserver.unobserve(card);
+                            if (revealObserver) revealObserver.unobserve(card);
                             card.classList.remove('revealed');
                             card.style.transitionDelay = (i * 0.1) + 's';
                             revealObserver.observe(card);
                         });
                     });
                 }
+
+                revealObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            // Clear the stagger delay after reveal so hover is always instant
+                            setTimeout(() => {
+                                entry.target.style.transitionDelay = '0s';
+                            }, 700);
+                        }
+                    });
+                }, { threshold: 0.06 });
 
                 armCards(Array.from(allCards));
 
